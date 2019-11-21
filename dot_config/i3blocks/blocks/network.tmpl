@@ -1,0 +1,5 @@
+#ip=$(hostname -i | sed 's/ //g')
+ssid=$(iw dev wlp3s0 link | grep SSID | sed "s/SSID: //" )
+if [ "$ssid" ]; then
+	echo  $ip $ssid
+fi

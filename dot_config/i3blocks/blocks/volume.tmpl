@@ -1,0 +1,16 @@
+VOLUME=$(amixer get Master | grep 'Right:' | awk -F'[][]' '{print $2 }' | sed "s/%//")
+STATUS=$(amixer get Master | grep 'Right:' | awk -F'[][]' '{print $4 }')
+
+if [ $STATUS == 'on' ]; then
+	if [ $VOLUME -lt 25 ]; then
+		emoji='🔈'
+	elif [ $VOLUME -lt 75 ]; then
+		emoji='🔉'
+	else
+		emoji='🔊'
+	fi
+else
+	emoji='🔇'
+fi
+
+echo $emoji $VOLUME%

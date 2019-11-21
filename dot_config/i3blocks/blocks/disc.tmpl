@@ -1,0 +1,2 @@
+space=$(df -H --output=avail "$BLOCK_INSTANCE" | tail -1 | sed 's/ //g')
+echo $BLOCK_INSTANCE: ${space}B
